@@ -15,7 +15,7 @@
 В данном проекте реализованы задачи:
 1. Создана база данных.
 2. Разработаны классы по работе с БД.
-3. Реализованы методы для REST API: POST submitData, GET /submitData/<id>, PATCH /submitData/<id>, GET /submitData/?user__email=<email>.
+3. Реализованы методы для REST API: POST submitData, GET /submitData/<id>, PATCH /submitData/ <id> , GET /submitData/?user__email=<email> .
 4. Подготовлена документация.
 
 Возможности приложения.
