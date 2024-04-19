@@ -1,4 +1,5 @@
-from rest_framework import viewsets, status
+from django.http import JsonResponse
+from rest_framework import viewsets, status, generics
 from rest_framework.response import Response
 from .serializers import *
 from .models import *
@@ -50,3 +51,30 @@ class PerevalViewset(viewsets.ModelViewSet):
                 'message': 'Ошибка подключения к базе данных',
                 'id': None
             })
+
+    def partial_update(self, request, *args, **kwargs):
+        pereval = self.get_object()
+        if pereval.status == 'new':
+            serializer = PerevalSerializer(pereval, data=request.data, partial=True)
+            if serializer.is_valid():
+                serializer.save()
+                return Response({
+                    'state': '1',
+                    'message': 'запись успешно изменена'
+                })
+            else:
+                return Response({
+                    'state': '0',
+                    'message': serializer.errors
+                })
+        else:
+            return Response({
+                'state': '0',
+                'message': f"отклонено. причина: {pereval.get_status_display()}"
+            })
+
+    def update(self, request, *args, **kwargs):
+        pass
+
+    def destroy(self, request, *args, **kwargs):
+        pass

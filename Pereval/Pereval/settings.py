@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'perevalapp',
     'rest_framework',
+    'drf_yasg',
     'django_filters',
 ]
 
@@ -77,25 +78,25 @@ TEMPLATES = [
 WSGI_APPLICATION = 'Pereval.wsgi.application'
 
 
-#
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'pereval',
-        'USER': os.getenv('FSTR_LOGIN'),
-        'PASSWORD': os.getenv('FSTR_PASS'),
-        'HOST': os.getenv('FSTR_DB_HOST'),
-        'PORT': os.getenv('FSTR_DB_PORT'),
-
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'pereval',
+#         'USER': os.getenv('FSTR_LOGIN'),
+#         'PASSWORD': os.getenv('FSTR_PASS'),
+#         'HOST': os.getenv('FSTR_DB_HOST'),
+#         'PORT': os.getenv('FSTR_DB_PORT'),
+#
+#     }
+# }
 
 AUTH_PASSWORD_VALIDATORS = [
     {
